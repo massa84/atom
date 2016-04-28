@@ -153,6 +153,7 @@ class TokenizedBuffer extends Model
     @emitter.emit 'did-change', event
 
   setVisible: (@visible) ->
+    @tokenizeNextChunk() if @visible
     @tokenizeInBackground() if @visible
 
   getTabLength: ->
@@ -247,7 +248,7 @@ class TokenizedBuffer extends Model
 
   handleBufferChange: (e) ->
     @changeCount = @buffer.changeCount
-
+s
     {oldRange, newRange} = e
     start = oldRange.start.row
     end = oldRange.end.row
